@@ -2,14 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include <stdbool.h>
 
 void create_data();
 void show_data();
 void update_data();
 void delete_data();
 void search_data();
-void exit();
-
 
 int  data_total_mhs, data,pilih;
 char nim[50], data_nim['0'][50], data_nama['0'][50], data_kelas['0'][50], data_dosen['0'][50];
@@ -18,7 +17,7 @@ bool duplicate, detect;
 
 int main(){
 
-	menu:
+        menu:
 		system("cls");
 		printf("Sistem Pendataan Akun I-Lab Infotech\n\n");
 		printf(("====== Pilihan Menu ===============\n"));
@@ -32,21 +31,43 @@ int main(){
 		scanf("%d", &pilih);
 		
 		switch(pilih){
-			case 1:create_data();
+			case 1:
+                create_data();
+                printf(" Tekan enter untuk kembali ke menu...");
+                getch(); goto menu;
 				break;
-			case 2:show_data();
+			
+            case 2:
+                show_data();
+                printf(" Tekan enter untuk kembali ke menu...");
+                getch(); goto menu;
 				break;
-			case 3: update_data();
+			
+            case 3:
+                update_data();
+                printf(" Tekan enter untuk kembali ke menu...");
+                getch(); goto menu;
 				break;	
-			case 4:delete_data();
+			
+            case 4:
+                delete_data();
+                printf(" Tekan enter untuk kembali ke menu...");
+                getch(); goto menu;
 				break;
-			case 5:search_data();
+			
+            case 5:
+                search_data();
+                printf(" Tekan enter untuk kembali ke menu...");
+                getch(); goto menu;
 				break;
-			case 6:exit();
-				break;
-			default:printf("\nMohon Maaf Pilihan Anda Salah !");
-				getch();
-				goto menu;
+			
+            case 6:
+                return(0);
+			    break;
+            
+			default:
+                printf("\nMohon Maaf Pilihan Anda Salah !");
+				getch(); goto menu;
 		}
 }
 
@@ -91,13 +112,11 @@ void show_data () {
                 printf("\n\n Nama Praktikan\t\t\t: %s", data_nama[data]);
                 printf("\n\n Kelas Pemrograman Dasar\t: %s", data_kelas[data]);
                 printf("\n\n Dosen Pengampu\t\t\t: %s", data_dosen[data]);
-                printf("\n\n"
+                printf("\n\n");
             }
         } else {
             printf("\n\n !!! Data Tidak Ditemukan !!!\n");
         }
-        printf(" Tekan enter untuk kembali ke menu...");
-        getch(); goto menu; break;
 }
 
 void update_data() {
@@ -123,9 +142,6 @@ void update_data() {
 			scanf(" %[^\n]s", data_dosen[data]);
             printf("\n\n Data Berhasil di Edit.\n");
         }
-        printf(" Tekan enter untuk kembali ke menu...");
-        getch(); goto menu;
-	
 }
 
 void delete_data() {
@@ -152,9 +168,6 @@ void delete_data() {
             data--; strcpy(data_nim[data],""); data_total_mhs--;
             printf("\n\n Data Berhasil di Hapus\n");
         }
-        printf(" Tekan enter untuk kembali ke menu...");
-        getch(); goto menu; break;
-	
 }
 
 void search_data() {
@@ -176,17 +189,4 @@ void search_data() {
             printf("\n\n Dosen Pengampu\t\t\t: %s", data_dosen[data]);
             printf("\n\n");
         }
-        printf(" Tekan enter untuk kembali ke menu...");
-        getch(); goto menu; break;
-	
-	
-}
-
-void exit() {
-	return(0);
-    default:
-        system("cls");
-        printf(" Inputan anda salah...\n Tekan enter untuk kembali ke menu...");
-        getch(); goto menu; break;
-	
 }
